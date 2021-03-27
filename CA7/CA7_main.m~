@@ -1,0 +1,24 @@
+U = imread("ca6_image.tiff");
+
+% generating a noisy version of the image using Gaussian Noise
+Ug = imnoise(U,'gaussian',0,0.002);
+
+%Generating a salt and pepper noisy version
+Us = imnoise(U,'salt & pepper');
+
+%High pass filter h_H
+h_H = (1./7).*[-1 -2 -1; -2 19 -2; -1 -2 -1];
+
+%Using a High Pass filter on the original image
+
+Uh = imfilter(U,h_H);
+
+subplot(2,1,1);
+imagesc(U);
+subplot(2,1,2);
+imagesc(Uh);
+color
+
+
+
+
